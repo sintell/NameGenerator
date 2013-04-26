@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>resouces/refresh_icon_24x24.png</file>
+        <file>resouces/refresh_icon_16x16.png</file>
+    </qresource>
+</RCC>

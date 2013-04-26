@@ -20,3 +20,6 @@ HEADERS  += namegenerator.h \
     namesgenerator.h
 
 FORMS    += namegenerator.ui
+
+RESOURCES += \
+    resources.qrc
