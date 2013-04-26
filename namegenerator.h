@@ -8,6 +8,7 @@
 #include <QTextEdit>
 #include <QStringList>
 #include <QMessageBox>
+#include <time.h>
 
 namespace Ui {
 class NameGenerator;
@@ -46,7 +47,7 @@ private:
     QVector<QTextEdit*> m_Patterns;
     int m_Char;
     QRegExp rx;
-    QVector<QStringList*> m_StrList;
+    QVector<QStringList> m_StrList;
 };
 
 #endif // NAMEGENERATOR_H

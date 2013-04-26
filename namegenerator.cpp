@@ -56,7 +56,6 @@ QTextEdit *NameGenerator::addPattern()
     lt->addWidget(lb);
     lt->addWidget(te);
 
-    connect(te, SIGNAL(textChanged()), this, SLOT(generateStuff()));
     ui->Patterns->addLayout(lt);
     return te;
 }
@@ -88,15 +87,24 @@ bool NameGenerator::save()
 void NameGenerator::generateStuff()
 {
     if(ui->checkBox->isChecked()) {
-        QStringList *qsl = new QStringList();
+        m_StrList.clear();
         foreach(int i, *(patternsIndexes())) {
-            *qsl = QString(m_Patterns.at(i)->toPlainText()).split(",");
+            m_StrList.append(QString(m_Patterns.at(i)->toPlainText()).split(","));
         }
         ui->te_NamesList->clear();
+        qsrand(time(0));
+        QString str;
         for (int i = 0; i < 15; ++i) {
-            ui->te_NamesList->append(qsl->join(""));
+            str.clear();
+            foreach (QStringList strl, m_StrList) {
+                if(!strl.isEmpty()) {
+                    str.append(strl.at(qrand()%(strl.size())));
+                }
+            }
+            ui->te_NamesList->append(str);
+            qDebug()  << "str: "<< str;
         }
-        qDebug() << qsl->join("");
+
     }
 }
 
@@ -113,6 +121,12 @@ void NameGenerator::on_le_PatternString_textChanged(const QString &arg1)
 {
     qDebug() << *(patternsIndexes());
     ui->le_PatternString->setText(arg1.toUpper());
+    for (int i = 0; i < m_Patterns.size(); ++i) {
+        disconnect(m_Patterns.at(i),0,0,0);
+    }
+    foreach (int i, *(patternsIndexes())) {
+        connect(m_Patterns[i], SIGNAL(textChanged()),this,SLOT(generateStuff()));
+    }
 }
 
 void NameGenerator::on_pb_Refresh_clicked()
