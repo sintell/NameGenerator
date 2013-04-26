@@ -8,6 +8,7 @@
 #include <QTextEdit>
 #include <QStringList>
 #include <QMessageBox>
+#include <QKeyEvent>
 #include <time.h>
 
 namespace Ui {
@@ -28,6 +29,7 @@ protected:
     QList<int> *patternsIndexes();
     QString generatePatternCheck();
     bool save();
+    void keyPressEvent(QKeyEvent *e);
     //void generateStuff();
 private slots:
     void generateStuff();

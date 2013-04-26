@@ -53,6 +53,8 @@ QTextEdit *NameGenerator::addPattern()
     lb->setMaximumSize(10,85);
     lb->adjustSize();
 
+    te->setFont(QFont("Verdana",9));
+
     lt->addWidget(lb);
     lt->addWidget(te);
 
@@ -84,6 +86,13 @@ bool NameGenerator::save()
 {
 }
 
+void NameGenerator::keyPressEvent(QKeyEvent *e)
+{
+    if(e->matches(QKeySequence::Refresh)) {
+        generateStuff();
+    }
+}
+
 void NameGenerator::generateStuff()
 {
     if(ui->checkBox->isChecked()) {
@@ -102,7 +111,6 @@ void NameGenerator::generateStuff()
                 }
             }
             ui->te_NamesList->append(str);
-            qDebug()  << "str: "<< str;
         }
 
     }
