@@ -1,5 +1,7 @@
-#ifndef NAMESGENERATOR_H
+﻿#ifndef NAMESGENERATOR_H
 #define NAMESGENERATOR_H
+
+#include <time.h>
 
 #include <QObject>
 #include <QString>
