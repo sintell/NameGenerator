@@ -1,6 +1,6 @@
-﻿#include "namegenerator.h"
+#include "namegenerator.h"
 #include "ui_namegenerator.h"
-#include <QDebug>
+
 
 const unsigned short CAPITAL_ALPHA_OFFSET = 65;
 const unsigned short SMALL_ALPHA_OFFSET = 97;
@@ -119,7 +119,7 @@ void NameGenerator::generateStuff()
 void NameGenerator::on_pb_AddPattern_clicked()
 {
     m_Patterns << addPattern();
-    qDebug() << generatePatternCheck();
+   // qDebug() << generatePatternCheck();
     rx.setPattern(generatePatternCheck());
     QRegExpValidator *validator = new QRegExpValidator(rx, this);
     ui->le_PatternString->setValidator(validator);
@@ -127,7 +127,7 @@ void NameGenerator::on_pb_AddPattern_clicked()
 
 void NameGenerator::on_le_PatternString_textChanged(const QString &arg1)
 {
-    qDebug() << *(patternsIndexes());
+    //qDebug() << *(patternsIndexes());
     ui->le_PatternString->setText(arg1.toUpper());
     for (int i = 0; i < m_Patterns.size(); ++i) {
         disconnect(m_Patterns.at(i),0,0,0);
