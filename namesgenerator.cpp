@@ -1,5 +1,5 @@
 #include "namesgenerator.h"
-#include <QDebug>
+
 
 NamesGenerator::NamesGenerator(QObject *parent) :
     QObject(parent)
@@ -36,7 +36,7 @@ QString NamesGenerator::generate()
         fullName = generateName() + " " +
                 generateSurname();
 
-        qDebug() << fullName;
+       // qDebug() << fullName;
 
     }
     return fullName;
@@ -49,7 +49,7 @@ QString NamesGenerator::generate(CH_RACE chRace, CH_CLASS chClass)
     for (int i = 0; i < 20; ++i) {
         fullName = generateName() + " " +
                 generateSurname();
-        qDebug() << fullName;
+      //  qDebug() << fullName;
     }
     return fullName;
 }
